@@ -1,5 +1,6 @@
 import { Footer } from '@/components/footer';
 import { Header } from '@/components/header';
+import { ReactNode } from 'react';
 
 const DUMMY_DATA = {
   description: `React is indeed a great choice, not only because it will enable you to
@@ -38,13 +39,27 @@ function Product({ data }: ProductProps) {
   );
 }
 
+interface MainProps {
+  children: ReactNode;
+}
+
+function Main({ children }: MainProps) {
+  return (
+    <div>
+      <main className='flex-grow max-w-7xl mx-auto grid sm:grid-cols-2 p-6 gap-6'>
+        {children}
+      </main>
+    </div>
+  );
+}
+
 function Home() {
   return (
     <div className='flex flex-col min-h-screen'>
       <Header />
-      <main className='flex-grow max-w-7xl mx-auto grid sm:grid-cols-2 p-6 gap-6'>
+      <Main>
         <Product data={DUMMY_DATA} />
-      </main>
+      </Main>
       <Footer />
     </div>
   );
