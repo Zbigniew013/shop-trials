@@ -11,9 +11,30 @@ const DUMMY_DATA = {
   rating: 4.5,
 };
 
-function Rating() {
+interface RatingProps {
+  rating: number;
+}
+
+function Rating({ rating }: RatingProps) {
+  return <div className='text-amber-700 font-extrabold'>{rating}</div>;
+}
+
+interface ProductProps {
+  data: {
+    description: string;
+    thumbnailUrl: string;
+    thumbnailAlt: string;
+    rating: number;
+  };
+}
+
+function Product({ data }: ProductProps) {
   return (
-    <div className='text-amber-700 font-extrabold'>{DUMMY_DATA.rating}</div>
+    <div>
+      <img src={data.thumbnailUrl} alt={data.thumbnailAlt} />
+      <p>{data.description}</p>
+      <Rating rating={data.rating} />
+    </div>
   );
 }
 
@@ -22,9 +43,7 @@ function Home() {
     <div className='flex flex-col min-h-screen'>
       <Header />
       <main className='flex-grow max-w-7xl mx-auto grid sm:grid-cols-2 p-6 gap-6'>
-        <img src={DUMMY_DATA.thumbnailUrl} alt={DUMMY_DATA.thumbnailAlt} />
-        <p>{DUMMY_DATA.description}</p>
-        <Rating />
+        <Product data={DUMMY_DATA} />
       </main>
       <Footer />
     </div>
