@@ -1,6 +1,7 @@
 import { Footer } from '@/components/footer';
 import { Header } from '@/components/header';
-import { ReactNode } from 'react';
+import { Main } from '@/components/main';
+import { Product } from '@/components/product';
 
 const DUMMY_DATA = {
   description: `React is indeed a great choice, not only because it will enable you to
@@ -11,47 +12,6 @@ const DUMMY_DATA = {
   thumbnailAlt: `notebook`,
   rating: 4.5,
 };
-
-interface RatingProps {
-  rating: number;
-}
-
-function Rating({ rating }: RatingProps) {
-  return <div className='text-amber-700 font-extrabold'>{rating}</div>;
-}
-
-interface ProductProps {
-  data: {
-    description: string;
-    thumbnailUrl: string;
-    thumbnailAlt: string;
-    rating: number;
-  };
-}
-
-function Product({ data }: ProductProps) {
-  return (
-    <div>
-      <img src={data.thumbnailUrl} alt={data.thumbnailAlt} />
-      <p>{data.description}</p>
-      <Rating rating={data.rating} />
-    </div>
-  );
-}
-
-interface MainProps {
-  children: ReactNode;
-}
-
-function Main({ children }: MainProps) {
-  return (
-    <div>
-      <main className='flex-grow max-w-7xl mx-auto grid sm:grid-cols-2 p-6 gap-6'>
-        {children}
-      </main>
-    </div>
-  );
-}
 
 function Home() {
   return (
