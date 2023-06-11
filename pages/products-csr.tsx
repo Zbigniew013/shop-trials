@@ -1,9 +1,19 @@
 import { Product } from '@/components/product';
-import { InferGetStaticPropsType } from 'next';
+import { error } from 'console';
+import { useQuery } from 'react-query';
 
-function ProducstPage({
-  data,
-}: InferGetStaticPropsType<typeof getStaticProps>) {
+async function getProducts() {
+  const res = await fetch(`https://fakestoreapi.com/products/`);
+  const data: StoreApiResponse[] = await res.json();
+  return data;
+}
+
+function ProductsCSRPage() {
+  const { data, isLoading, isError } = useQuery('products', getProducts);
+
+  if (isLoading) return <h1>Loading...</h1>;
+  if (!data || isError) return <h1>Ooops... Something went wrong...</h1>;
+
   return (
     <ul className='grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-5'>
       {data.map(product => (
@@ -23,18 +33,7 @@ function ProducstPage({
   );
 }
 
-export default ProducstPage;
-
-export async function getStaticProps() {
-  const res = await fetch(`https://fakestoreapi.com/products/`);
-  const data: StoreApiResponse[] = await res.json();
-
-  return {
-    props: {
-      data,
-    },
-  };
-}
+export default ProductsCSRPage;
 
 interface StoreApiResponse {
   id: number;

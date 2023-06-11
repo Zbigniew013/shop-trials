@@ -4,6 +4,7 @@ import { Main } from '@/components/main';
 import { Product } from '@/components/product';
 
 const DUMMY_DATA = {
+  title: `Laptop`,
   description: `React is indeed a great choice, not only because it will enable you to
   build any application that you can imagine, but also because there is
   always a huge demand for skilled react developers like the one that
