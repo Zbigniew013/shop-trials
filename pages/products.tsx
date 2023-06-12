@@ -1,4 +1,4 @@
-import { Product } from '@/components/product';
+import { ProductListItem } from '@/components/product';
 import { InferGetStaticPropsType } from 'next';
 
 function ProducstPage({
@@ -8,13 +8,11 @@ function ProducstPage({
     <ul className='grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-5'>
       {data.map(product => (
         <li key={product.id} className='shadow-xl border-spacing-2'>
-          <Product
+          <ProductListItem
             data={{
               title: product.title,
-              description: product.description,
               thumbnailUrl: product.image,
               thumbnailAlt: product.title,
-              rating: product.rating.rate,
             }}
           />
         </li>

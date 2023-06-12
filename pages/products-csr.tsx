@@ -1,4 +1,4 @@
-import { Product } from '@/components/product';
+import { ProductDetails } from '@/components/product';
 import { error } from 'console';
 import { useQuery } from 'react-query';
 
@@ -18,7 +18,7 @@ function ProductsCSRPage() {
     <ul className='grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-5'>
       {data.map(product => (
         <li key={product.id} className='shadow-xl border-spacing-2'>
-          <Product
+          <ProductDetails
             data={{
               title: product.title,
               description: product.description,

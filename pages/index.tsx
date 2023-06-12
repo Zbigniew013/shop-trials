@@ -1,7 +1,7 @@
 import { Footer } from '@/components/footer';
 import { Header } from '@/components/header';
 import { Main } from '@/components/main';
-import { Product } from '@/components/product';
+import { ProductDetails } from '@/components/product';
 
 const DUMMY_DATA = {
   title: `Laptop`,
@@ -19,7 +19,7 @@ function Home() {
     <div className='flex flex-col min-h-screen'>
       <Header />
       <Main>
-        <Product data={DUMMY_DATA} />
+        <ProductDetails data={DUMMY_DATA} />
       </Main>
       <Footer />
     </div>
