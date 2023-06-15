@@ -1,5 +1,6 @@
 import { ProductDetails } from '@/components/product';
 import { GetStaticPropsContext, InferGetStaticPropsType } from 'next';
+import Link from 'next/link';
 
 function ProductIdPage({
   data,
@@ -8,8 +9,10 @@ function ProductIdPage({
 
   return (
     <div>
+      <Link href={`/products`}>Back to Main Page</Link>
       <ProductDetails
         data={{
+          id: data.id,
           title: data.title,
           thumbnailUrl: data.image,
           thumbnailAlt: data.title,

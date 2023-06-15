@@ -10,6 +10,7 @@ function ProducstPage({
         <li key={product.id} className='shadow-xl border-spacing-2'>
           <ProductListItem
             data={{
+              id: product.id,
               title: product.title,
               thumbnailUrl: product.image,
               thumbnailAlt: product.title,
